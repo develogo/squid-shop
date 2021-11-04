@@ -1,16 +1,41 @@
-# squidgame
+<p align="center">
+ <img width="100" src="https://develogo.com/demoapp/squidshop/logo.png" align="center" alt="GitHub Readme Stats" />
+ <h2 align="center">Squid Shop</h2>
+ <p align="center">Squid Game Shop App
 
-A new Flutter project.
 
-## Getting Started
+  <p align="center">
+    <a href="#demo">App demo</a>
+    ·
+    <a href="https://github.com/anuraghazra/github-readme-stats/issues/new/choose">Report Bug</a>
+  </p>
+  <!---
+<p align="center">
+    <a href="/docs/readme_pt-BR.md">Português Brasileiro</a>
+  </p>
+-->
+  
+</p>
+<p align="center">Love the project? Give me a star!
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+<p>
+<img src="https://develogo.com/demoapp/squidshop/logo2.png" alt="Give india logo" width="200" />
+</a>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Application built in Flutter based on [Design](https://www.figma.com/community/file/1032691689021811781).<br />
+Design credits to [Johnson Olubodun](https://www.figma.com/community/file/1032691689021811781)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+</p>
+
+
+# Demo
+
+
+<img src="https://develogo.com/demoapp/squidshop/1.jpg" width="220"/> <img src="https://develogo.com/demoapp/squidshop/2.jpg" width="220"/> <img src="https://develogo.com/demoapp/squidshop/3.jpg" width="220"/> 
+
+
+---
+Contributions are welcome! <3
+
+Made with :heart: and Flutter.
