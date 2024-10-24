@@ -31,8 +31,11 @@ Design credits to [Johnson Olubodun](https://www.figma.com/community/file/103269
 
 # Demo
 
-
-<img src="https://develogo.com/demoapp/squidshop/1.jpg" width="220"/> <img src="https://develogo.com/demoapp/squidshop/2.jpg" width="220"/> <img src="https://develogo.com/demoapp/squidshop/3.jpg" width="220"/> 
+<p align="center">
+<img src="https://raw.githubusercontent.com/develogo/squid-shop/main/assets/prints/Screenshot_1.png" width="220"/> 
+<img src="https://raw.githubusercontent.com/develogo/squid-shop/main/assets/prints/Screenshot_2.png" width="220"/> 
+<img src="https://raw.githubusercontent.com/develogo/squid-shop/main/assets/prints/Screenshot_3.png" width="220"/> 
+</p>
 
 
 ---
