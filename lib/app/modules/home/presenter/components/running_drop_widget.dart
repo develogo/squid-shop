@@ -8,7 +8,11 @@ class RunningDropWidget extends StatelessWidget {
   final int selectedIndex;
   final int previousIndex;
 
-  const RunningDropWidget({Key? key, required this.controller, required this.selectedIndex, required this.previousIndex}) : super(key: key);
+  const RunningDropWidget(
+      {super.key,
+      required this.controller,
+      required this.selectedIndex,
+      required this.previousIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +35,7 @@ class RunningDropWidget extends StatelessWidget {
                 .value,
             child: SizedBox(
               width: maxElementWidth,
-              child: Column(
+              child: const Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   // Container(
@@ -54,7 +58,7 @@ class RunningDropWidget extends StatelessWidget {
 class MyArc extends StatelessWidget {
   final double diameter;
 
-  const MyArc({Key? key, this.diameter = 200}) : super(key: key);
+  const MyArc({super.key, this.diameter = 200});
 
   @override
   Widget build(BuildContext context) {

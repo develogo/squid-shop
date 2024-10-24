@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
 
 class RecentOrderCardWidget extends StatelessWidget {
   final String title;
   final String asset;
-  const RecentOrderCardWidget({Key? key, required this.asset, required this.title}) : super(key: key);
+  const RecentOrderCardWidget(
+      {super.key, required this.asset, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
+      child: SizedBox(
         height: 100,
         width: 220,
         child: Card(
+          color: Colors.white,
           shadowColor: Colors.black.withOpacity(.3),
           elevation: 8,
           child: Row(
@@ -24,7 +25,7 @@ class RecentOrderCardWidget extends StatelessWidget {
                 child: SizedBox(
                   width: double.maxFinite,
                   child: Transform.translate(
-                    offset: Offset(5, -14),
+                    offset: const Offset(5, -14),
                     child: Transform.scale(
                       scale: 1.3,
                       child: Image.asset(
@@ -60,10 +61,14 @@ class RecentOrderCardWidget extends StatelessWidget {
                       children: [
                         Text(
                           'View details',
-                          style: GoogleFonts.poppins(fontSize: 14, color: Colors.black54),
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            color: Colors.black54,
+                          ),
                         ),
                         const SizedBox(width: 6),
-                        Icon(IconlyLight.arrow_right, size: 14, color: Colors.black54)
+                        const Icon(IconlyLight.arrow_right,
+                            size: 14, color: Colors.black54)
                       ],
                     ),
                   ],

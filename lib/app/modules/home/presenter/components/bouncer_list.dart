@@ -8,13 +8,13 @@ class BouncerList extends StatelessWidget {
   final EdgeInsetsGeometry padding;
 
   const BouncerList({
-    Key? key,
+    super.key,
     required this.itemCount,
     required this.height,
     required this.itemBuilder,
     this.separatorBuilder = const SizedBox(width: 10),
     this.padding = const EdgeInsets.only(left: 14),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

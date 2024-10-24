@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
 
 class HomeAppBarWidget extends StatelessWidget {
-  const HomeAppBarWidget({Key? key}) : super(key: key);
+  const HomeAppBarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class HomeAppBarWidget extends StatelessWidget {
             Hero(
               tag: 'splash',
               child: Image.asset(
-                'asset/image/logo_black.png',
+                'assets/images/logo_black.png',
                 width: 80,
               ),
             ),
@@ -35,7 +35,8 @@ class HomeAppBarWidget extends StatelessWidget {
                     color: Colors.black,
                   ),
                   decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                     border: InputBorder.none,
                     hintText: 'Search',
                     suffixIcon: Icon(IconlyLight.search),

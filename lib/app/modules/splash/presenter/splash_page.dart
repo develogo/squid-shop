@@ -1,22 +1,17 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:squidgame/app/core/round_colors.dart';
 
-import 'splash_store.dart';
-
 class SplashPage extends StatefulWidget {
   final String title;
-  const SplashPage({Key? key, this.title = 'SplashPage'}) : super(key: key);
+  const SplashPage({super.key, this.title = 'SplashPage'});
   @override
   SplashPageState createState() => SplashPageState();
 }
 
 class SplashPageState extends State<SplashPage> {
-  final SplashStore store = Modular.get();
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -27,11 +22,11 @@ class SplashPageState extends State<SplashPage> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage('asset/image/splash_background.png'),
+            image: AssetImage('assets/images/splash_background.png'),
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
+          padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
           child: SafeArea(
             child: Column(
               children: <Widget>[
@@ -39,7 +34,7 @@ class SplashPageState extends State<SplashPage> {
                   height: 10,
                 ),
                 Image.asset(
-                  'asset/image/logo_white.png',
+                  'assets/images/logo_white.png',
                   width: 100,
                 ),
                 const Spacer(),
@@ -57,14 +52,15 @@ class SplashPageState extends State<SplashPage> {
                         color: Colors.grey.withOpacity(.4),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 14, vertical: 12),
                         child: Column(
                           children: [
                             const SizedBox(height: 20),
                             Hero(
                               tag: 'splash',
                               child: Image.asset(
-                                'asset/image/everything.png',
+                                'assets/images/everything.png',
                                 width: 220,
                               ),
                             ),
@@ -72,23 +68,29 @@ class SplashPageState extends State<SplashPage> {
                             Text(
                               'Shop your davourite toys and outfits of the Squid Game on the go!',
                               textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(fontSize: 14, color: Colors.white),
+                              style: GoogleFonts.poppins(
+                                  fontSize: 14, color: Colors.white),
                             ),
                             const Spacer(),
                             SizedBox(
                               width: double.infinity,
                               height: 45,
                               child: ElevatedButton(
-                                onPressed: () => Modular.to.pushNamed('/home/'),
+                                onPressed: () =>
+                                    Navigator.pushNamed(context, '/home'),
                                 style: ElevatedButton.styleFrom(
-                                  primary: RoundColor.pink,
+                                  backgroundColor: RoundColor.pink,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                 ),
                                 child: Text(
                                   'Shop Now',
-                                  style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),

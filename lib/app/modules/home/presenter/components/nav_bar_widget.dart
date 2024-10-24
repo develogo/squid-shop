@@ -5,14 +5,15 @@ import 'package:squidgame/app/modules/home/presenter/components/running_drop_wid
 
 class NavBarWidget extends StatefulWidget {
   const NavBarWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
-  _NavBarWidgetState createState() => _NavBarWidgetState();
+  State<NavBarWidget> createState() => NavBarWidgetState();
 }
 
-class _NavBarWidgetState extends State<NavBarWidget> with TickerProviderStateMixin {
+class NavBarWidgetState extends State<NavBarWidget>
+    with TickerProviderStateMixin {
   int _previousIndex = 0;
   int selectedIndex = 0;
 
@@ -65,7 +66,7 @@ class _NavBarWidgetState extends State<NavBarWidget> with TickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 80,
       child: Stack(
         children: [
@@ -90,7 +91,7 @@ class _NavBarWidgetState extends State<NavBarWidget> with TickerProviderStateMix
                         Container(
                           height: 50,
                           width: 50,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.transparent,
                             shape: BoxShape.circle,
                           ),
@@ -120,10 +121,10 @@ class _NavBarWidgetState extends State<NavBarWidget> with TickerProviderStateMix
                                     gradient: LinearGradient(
                                       begin: Alignment.topCenter,
                                       end: Alignment.bottomCenter,
-                                      stops: [0.0, .6],
+                                      stops: const [0.0, .6],
                                       colors: [
-                                        Color(0xffe84280).withOpacity(.2),
-                                        Color(0xffe84280),
+                                        const Color(0xffe84280).withOpacity(.2),
+                                        const Color(0xffe84280),
                                       ],
                                     ),
                                     shape: BoxShape.circle,
@@ -133,7 +134,9 @@ class _NavBarWidgetState extends State<NavBarWidget> with TickerProviderStateMix
                             ),
                           ),
                         ),
-                        Center(child: buildIcon(selectedIcons[index], Colors.white)),
+                        Center(
+                            child:
+                                buildIcon(selectedIcons[index], Colors.white)),
                       ],
                     );
                   }
@@ -146,7 +149,9 @@ class _NavBarWidgetState extends State<NavBarWidget> with TickerProviderStateMix
                         color: Colors.transparent,
                         shape: BoxShape.circle,
                       ),
-                      child: Center(child: buildIcon(unselectedIcons[index], Colors.black54)),
+                      child: Center(
+                          child: buildIcon(
+                              unselectedIcons[index], Colors.black54)),
                     ),
                   );
                 },

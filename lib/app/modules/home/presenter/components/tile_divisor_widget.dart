@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TileDivisorWidget extends StatelessWidget {
   final String title;
-  const TileDivisorWidget({Key? key, required this.title}) : super(key: key);
+  const TileDivisorWidget({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

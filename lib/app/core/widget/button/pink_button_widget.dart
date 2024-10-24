@@ -8,12 +8,12 @@ class PinkButtonWidget extends StatelessWidget {
   final double? height;
 
   const PinkButtonWidget({
-    Key? key,
+    super.key,
     required this.child,
     required this.onPressed,
     this.color = RoundColor.pink,
     this.height = 45,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class PinkButtonWidget extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          primary: color,
+          backgroundColor: color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),

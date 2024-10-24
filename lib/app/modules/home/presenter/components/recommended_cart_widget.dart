@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
 import 'package:squidgame/app/core/widget/button/pink_button_widget.dart';
@@ -10,15 +9,20 @@ class RecommendedCardWidget extends StatelessWidget {
 
   final VoidCallback onPressed;
 
-  const RecommendedCardWidget({Key? key, required this.onPressed, required this.image, required this.name}) : super(key: key);
+  const RecommendedCardWidget(
+      {super.key,
+      required this.onPressed,
+      required this.image,
+      required this.name});
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
+      child: SizedBox(
         height: 300,
         width: 200,
         child: Card(
+          color: Colors.white,
           shadowColor: Colors.black.withOpacity(.3),
           elevation: 8,
           shape: RoundedRectangleBorder(
@@ -29,7 +33,7 @@ class RecommendedCardWidget extends StatelessWidget {
             child: Stack(
               children: [
                 Transform.translate(
-                  offset: Offset(0, -40),
+                  offset: const Offset(0, -40),
                   child: Align(
                     alignment: Alignment.topCenter,
                     child: Hero(
@@ -43,7 +47,7 @@ class RecommendedCardWidget extends StatelessWidget {
                 ),
                 Align(
                   alignment: Alignment.topRight,
-                  child: Container(
+                  child: SizedBox(
                     width: 30,
                     child: IconButton(
                       padding: EdgeInsets.zero,
@@ -72,7 +76,7 @@ class RecommendedCardWidget extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Icon(
+                          const Icon(
                             IconlyBold.star,
                             color: Colors.amber,
                           )
@@ -80,8 +84,15 @@ class RecommendedCardWidget extends StatelessWidget {
                       ),
                       const SizedBox(height: 6),
                       PinkButtonWidget(
-                        child: Text('View detail', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold)),
                         onPressed: onPressed,
+                        child: Text(
+                          'View details',
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
                       )
                     ],
                   ),

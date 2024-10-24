@@ -1,5 +1,4 @@
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_triple/flutter_triple.dart';
+import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconly/iconly.dart';
@@ -7,32 +6,34 @@ import 'package:squidgame/app/core/round_colors.dart';
 import 'package:squidgame/app/core/widget/button/pink_button_widget.dart';
 import 'package:squidgame/app/modules/product_detail/presenter/product_detail_arguments.dart';
 import 'package:squidgame/app/modules/product_detail/presenter/product_detail_store.dart';
-import 'package:flutter/material.dart';
+import 'package:squidgame/di/di_setup.dart';
 
 class ProductDetailPage extends StatefulWidget {
   final ProductDetailArguments args;
-  const ProductDetailPage({Key? key, required this.args}) : super(key: key);
+  const ProductDetailPage({super.key, required this.args});
   @override
   ProductDetailPageState createState() => ProductDetailPageState();
 }
 
 class ProductDetailPageState extends State<ProductDetailPage> {
-  final ProductDetailStore store = Modular.get();
+  final ProductDetailStore store = getIt<ProductDetailStore>();
 
-  Widget buildCircle({required Function() onPress, required IconData icon, required Color color}) {
+  Widget buildCircle(
+      {required Function() onPress,
+      required IconData icon,
+      required Color color}) {
     return ElevatedButton(
       onPressed: onPress,
+      style: ElevatedButton.styleFrom(
+        elevation: 1,
+        shape: const CircleBorder(),
+        padding: const EdgeInsets.all(15),
+        backgroundColor: color,
+      ),
       child: Icon(
         icon,
         color: Colors.white,
         size: 16,
-      ),
-      style: ElevatedButton.styleFrom(
-        elevation: 1,
-        shape: CircleBorder(),
-        padding: EdgeInsets.all(15),
-        primary: color,
-        onPrimary: color,
       ),
     );
   }
@@ -41,6 +42,7 @@ class ProductDetailPageState extends State<ProductDetailPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       body: Column(
         children: [
           Stack(
@@ -73,12 +75,13 @@ class ProductDetailPageState extends State<ProductDetailPage> {
               SafeArea(
                 child: Container(
                   width: size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
-                        onPressed: () => Modular.to.pop(),
+                        onPressed: () => Navigator.pop(context),
                         icon: const Icon(
                           IconlyBroken.arrow_left,
                           color: Colors.black,
@@ -107,11 +110,15 @@ class ProductDetailPageState extends State<ProductDetailPage> {
                 children: [
                   Text(
                     widget.args.name,
-                    style: GoogleFonts.poppins(fontSize: 36, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.poppins(
+                        fontSize: 36, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     '\$ 79.90',
-                    style: GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.grey.shade500),
+                    style: GoogleFonts.poppins(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey.shade500),
                   ),
                   const SizedBox(height: 15),
                   SizedBox(
@@ -121,19 +128,26 @@ class ProductDetailPageState extends State<ProductDetailPage> {
                       children: [
                         Align(
                             alignment: Alignment.centerLeft,
-                            child: buildCircle(icon: FontAwesomeIcons.minus, onPress: store.decrement, color: RoundColor.pink.withOpacity(.7))),
+                            child: buildCircle(
+                                icon: FontAwesomeIcons.minus,
+                                onPress: store.decrement,
+                                color: RoundColor.pink.withOpacity(.7))),
                         Center(
                           child: ValueListenableBuilder(
                             valueListenable: store.qty,
                             builder: (context, value, child) => Text(
                               store.qty.value.toString(),
-                              style: GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.bold),
+                              style: GoogleFonts.poppins(
+                                  fontSize: 22, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
                         Align(
                             alignment: Alignment.centerRight,
-                            child: buildCircle(icon: FontAwesomeIcons.plus, onPress: store.increment, color: RoundColor.pink)),
+                            child: buildCircle(
+                                icon: FontAwesomeIcons.plus,
+                                onPress: store.increment,
+                                color: RoundColor.pink)),
                       ],
                     ),
                   ),
@@ -178,7 +192,11 @@ class ProductDetailPageState extends State<ProductDetailPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text('Add to cart', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black)),
+                    Text('Add to cart',
+                        style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.black)),
                     const Icon(
                       IconlyBroken.buy,
                       size: 22,
@@ -193,11 +211,14 @@ class ProductDetailPageState extends State<ProductDetailPage> {
             Expanded(
               child: PinkButtonWidget(
                 height: 56,
-                child: Text('Buy now',
-                    style: GoogleFonts.poppins(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                    )),
+                child: Text(
+                  'Buy now',
+                  style: GoogleFonts.poppins(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ),
                 onPressed: () {},
               ),
             ),

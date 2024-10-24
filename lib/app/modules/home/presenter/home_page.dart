@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_triple/flutter_triple.dart';
 import 'package:squidgame/app/modules/home/presenter/components/app_bar_home_widget.dart';
 import 'package:squidgame/app/modules/home/presenter/components/bouncer_list.dart';
 import 'package:squidgame/app/modules/home/presenter/components/nav_bar_widget.dart';
 import 'package:squidgame/app/modules/home/presenter/components/recent_order_cart_widget.dart';
-import 'package:squidgame/app/modules/home/presenter/components/running_drop_widget.dart';
 import 'package:squidgame/app/modules/home/presenter/components/tile_divisor_widget.dart';
 import 'package:squidgame/app/modules/product_detail/presenter/product_detail_arguments.dart';
+import 'package:squidgame/di/di_setup.dart';
+
 import 'components/recommended_cart_widget.dart';
 import 'home_store.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
-  const HomePage({Key? key, this.title = "Home"}) : super(key: key);
+  const HomePage({super.key, this.title = "Home"});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => HomePageState();
 }
 
-class _HomePageState extends ModularState<HomePage, HomeStore> {
+class HomePageState extends State<HomePage> {
+  final HomeStore store = getIt<HomeStore>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       body: Column(
         children: [
           const HomeAppBarWidget(),
@@ -38,13 +40,23 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                   itemBuilder: (p0, p1) => RecommendedCardWidget(
                     name: store.itens[p1].name,
                     image: store.itens[p1].assetImage,
-                    onPressed: () => Modular.to.pushNamed(
-                      '/product/',
+                    onPressed: () => Navigator.pushNamed(
+                      context,
+                      '/product',
                       arguments: ProductDetailArguments(
                         name: store.itens[p1].name,
                         assetImage: store.itens[p1].assetImage,
                       ),
                     ),
+                  ),
+                ),
+                const TileDivisorWidget(title: 'Most popular'),
+                BouncerList(
+                  itemCount: store.itens2.length,
+                  height: 160,
+                  itemBuilder: (p0, p1) => RecentOrderCardWidget(
+                    title: store.itens2[p1].name,
+                    asset: store.itens2[p1].assetImage,
                   ),
                 ),
                 const TileDivisorWidget(title: 'Recent orders'),
@@ -61,7 +73,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
           )
         ],
       ),
-      bottomNavigationBar: NavBarWidget(),
+      bottomNavigationBar: const NavBarWidget(),
     );
   }
 }
