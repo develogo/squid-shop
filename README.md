@@ -4,7 +4,7 @@
  <p align="center">Squid Game Shop App
 
   <p align="center">
-    <a href="#demo">App demo</a>
+    <a href="https://squidshop.develogo.dev/">App demo</a>
   </p>
 </p>
 
